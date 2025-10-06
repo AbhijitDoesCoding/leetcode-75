@@ -1,0 +1,30 @@
+class Solution
+{
+public:
+    double findMaxAverage(vector<int> &nums, int k)
+    {
+        double maxAvg = INT_MIN;
+        double avg = 0;
+        double sum = 0;
+        int i = 0;
+        int j = 0;
+        while (j < nums.size())
+        {
+            sum = sum + nums[j];
+            if (j - i + 1 < k)
+            {
+                j++;
+            }
+            else if (j - i + 1 == k)
+            {
+                cout << sum;
+                avg = sum / k;
+                maxAvg = max(avg, maxAvg);
+                sum -= nums[i];
+                i++;
+                j++;
+            }
+        }
+        return maxAvg;
+    }
+};
